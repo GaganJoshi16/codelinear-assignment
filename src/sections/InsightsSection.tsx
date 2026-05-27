@@ -1,5 +1,12 @@
 import svgPaths from "../assets/svg-paths";
 import { phoneShellMask } from "../assets/masks";
+import { AppImage } from "../components/ui";
+
+const MOBILE_SCREENSHOT_ALTS: Record<string, string> = {
+  "/mobile-banking-home.png": "Mobile banking home screen",
+  "/mobile-banking-stats.png": "Mobile banking statistics screen",
+  "/mobile-banking-profile.png": "Mobile banking profile screen",
+};
 
 /**
  * Large light-blue insights / feature-highlight section. Layout:
@@ -40,8 +47,8 @@ function MarqueeHandWaveIcon() {
           data-name="https://lottiefiles.com/animations/hand-wave-animation-Y3i4NmO8TS"
         >
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <img
-              alt=""
+            <AppImage
+              alt="Animated hand wave illustration"
               className="absolute h-full left-[0.67%] max-w-none top-0 w-[99.33%]"
               src="/hand-wave.png"
             />
@@ -161,8 +168,8 @@ function IPhoneMockup({ screenshotSrc }: { screenshotSrc: string }) {
           data-name="Blue"
         >
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <img
-              alt=""
+            <AppImage
+              alt="iPhone device frame"
               className="absolute left-0 max-w-none size-full top-0"
               src="/iphone-shell.png"
             />
@@ -181,8 +188,8 @@ function IPhoneMockup({ screenshotSrc }: { screenshotSrc: string }) {
               style={{ maskImage: `url('${phoneShellMask}')` }}
               data-name="Design"
             >
-              <img
-                alt=""
+              <AppImage
+                alt={MOBILE_SCREENSHOT_ALTS[screenshotSrc] ?? "Mobile banking app screenshot"}
                 className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
                 src={screenshotSrc}
               />
@@ -971,7 +978,10 @@ function CenterAmberGlowBlob() {
 
 function InsightsLightPanel() {
   return (
-    <div className="bg-brand-fg relative w-full overflow-clip flex flex-col gap-16 px-5 py-16 dt:block dt:h-[2647px] dt:w-[1440px] dt:px-0 dt:py-0">
+    <section
+      className="bg-brand-fg relative w-full overflow-clip flex flex-col gap-16 px-5 py-16 dt:block dt:h-[2647px] dt:w-[1440px] dt:px-0 dt:py-0"
+      aria-label="Insights"
+    >
       <GhostN7Wordmark />
       <BottomBlueGlowBlob />
       <GhostSevenWordmark />
@@ -981,13 +991,13 @@ function InsightsLightPanel() {
       <FeatureHighlightsStack />
       <PaperlessCalloutCard />
       <DigitalBankingPitchBlock />
-    </div>
+    </section>
   );
 }
 
 export default function InsightsSection() {
   return (
-    <div className="bg-white content-stretch flex flex-col items-start relative shrink-0">
+    <div className="bg-white content-stretch flex flex-col items-start relative shrink-0 w-full">
       <TopMarqueeBanner />
       <InsightsLightPanel />
     </div>

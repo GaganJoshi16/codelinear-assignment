@@ -1,0 +1,8 @@
+dist
+node_modules
+pnpm-lock.yaml
+.claude
+EXAMPLES.md
+CLAUDE.md
+default_shadcn_theme.css
+postcss.config.mjs

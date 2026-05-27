@@ -65,8 +65,11 @@ function CalloutCard() {
 
 export default function PaperlessCalloutPrimary() {
   return (
-    <div className="bg-brand-bg relative w-full overflow-clip px-5 py-12 dt:block dt:h-[681px] dt:w-[1440px] dt:px-0 dt:py-0">
+    <section
+      className="bg-brand-bg relative w-full overflow-clip px-5 py-12 dt:block dt:h-[681px] dt:w-[1440px] dt:px-0 dt:py-0"
+      aria-label="Paperless banking"
+    >
       <CalloutCard />
-    </div>
+    </section>
   );
 }

@@ -1,9 +1,5 @@
 import { dashboardScreenMask } from "../assets/masks";
-import {
-  DashboardScreenFrame,
-  LearnMoreLink,
-  PrimaryGradientButton,
-} from "./shared/primitives";
+import { AppImage, DashboardScreenFrame, LearnMoreLink, PrimaryGradientButton } from "../components/ui";
 
 function DashboardMaskedImage() {
   return (
@@ -13,8 +9,8 @@ function DashboardMaskedImage() {
         style={{ maskImage: `url('${dashboardScreenMask}')` }}
       >
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img
-            alt=""
+          <AppImage
+            alt="AML compliance dashboard screenshot"
             className="absolute h-full left-[-0.34%] max-w-none top-0 w-[100.46%]"
             src="/aml-dashboard.png"
           />
@@ -80,10 +76,13 @@ function Cb7BackdropWordmark() {
 
 export default function CoreBankingShowcase() {
   return (
-    <div className="bg-brand-bg relative w-full overflow-clip flex flex-col-reverse gap-8 px-5 py-16 dt:block dt:h-[619px] dt:w-[1440px] dt:px-0 dt:py-0">
+    <section
+      className="bg-brand-bg relative w-full overflow-clip flex flex-col-reverse gap-8 px-5 py-16 dt:block dt:h-[619px] dt:w-[1440px] dt:px-0 dt:py-0"
+      aria-label="Core banking"
+    >
       <Cb7BackdropWordmark />
       <CoreBankingDashboardFrame />
       <CoreBankingPitch />
-    </div>
+    </section>
   );
 }

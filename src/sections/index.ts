@@ -1,5 +1,5 @@
 export { default as HeaderNav } from "./HeaderNav";
-export { default as HeroSection } from "./HeroSection";
+export { default as HeroSection } from "./hero/HeroSection";
 export { default as SolutionsSection } from "./SolutionsSection";
 export { default as CoreBankingShowcase } from "./CoreBankingShowcase";
 export { default as CapabilitiesShowcase } from "./CapabilitiesShowcase";

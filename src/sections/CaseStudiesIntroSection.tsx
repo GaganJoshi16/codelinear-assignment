@@ -295,12 +295,15 @@ function InsightsBackgroundGlow() {
 
 export default function CaseStudiesIntroSection() {
   return (
-    <div className="bg-brand-bg relative w-full overflow-clip flex flex-col gap-10 px-5 py-16 dt:block dt:h-[853px] dt:w-[1440px] dt:px-0 dt:py-0">
+    <section
+      className="bg-brand-bg relative w-full overflow-clip flex flex-col gap-10 px-5 py-16 dt:block dt:h-[853px] dt:w-[1440px] dt:px-0 dt:py-0"
+      aria-label="Case studies introduction"
+    >
       <InsightsBackgroundGlow />
       <InsightsIntroHeading />
       <FeaturedInsightCard />
       <CompactInsightCardsRow />
       <ReadAllInsightsLink />
-    </div>
+    </section>
   );
 }

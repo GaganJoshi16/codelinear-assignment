@@ -1,5 +1,5 @@
 import { dashboardScreenMask } from "../assets/masks";
-import { CheckCircleIcon, DashboardScreenFrame } from "./shared/primitives";
+import { AppImage, CheckCircleIcon, DashboardScreenFrame } from "../components/ui";
 
 const FEATURES_COLUMN_ONE = [
   "Customer-On Boarding",
@@ -23,8 +23,8 @@ function CkycDashboardMaskedImage() {
         className="absolute h-[480.829px] left-[10.33px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-0.114px_0.33px] mask-size-[631.152px_408.798px] opacity-80 top-[7.24px] w-[631.2px]"
         style={{ maskImage: `url('${dashboardScreenMask}')` }}
       >
-        <img
-          alt=""
+        <AppImage
+          alt="CKYC onboarding dashboard screenshot"
           className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
           src="/ckyc-dashboard.png"
         />
@@ -89,13 +89,14 @@ function FeaturesColumnLeft() {
 function FeaturesColumnRight() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full dt:w-auto">
-      <FeatureCheckRow label="CRM Activities" dtWidth="dt:w-[265px]" itemsCenter />
-      <FeatureCheckRow label="Configuring New Banking Products" dtWidth="dt:w-[265px]" />
-      <FeatureCheckRow label="Loan disbursal and Loan management" dtWidth="dt:w-[265px]" />
-      <FeatureCheckRow
-        label="Establishing criteria for minimum balances, interest rates, number of withdrawals allowed and so on."
-        dtWidth="dt:w-[265px]"
-      />
+      {FEATURES_COLUMN_TWO.map((label, i) => (
+        <FeatureCheckRow
+          key={label}
+          label={label}
+          dtWidth="dt:w-[265px]"
+          itemsCenter={i === 0}
+        />
+      ))}
     </div>
   );
 }
@@ -140,9 +141,12 @@ function CapabilitiesPitch() {
 
 export default function CapabilitiesShowcase() {
   return (
-    <div className="bg-brand-bg relative w-full overflow-clip flex flex-col gap-10 px-5 py-16 dt:block dt:h-[681px] dt:w-[1440px] dt:px-0 dt:py-0">
+    <section
+      className="bg-brand-bg relative w-full overflow-clip flex flex-col gap-10 px-5 py-16 dt:block dt:h-[681px] dt:w-[1440px] dt:px-0 dt:py-0"
+      aria-label="Capabilities"
+    >
       <CapabilitiesPitch />
       <CkycDashboardFrame />
-    </div>
+    </section>
   );
 }

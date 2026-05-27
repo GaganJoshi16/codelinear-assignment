@@ -417,11 +417,11 @@ function CopyrightLine() {
 
 export default function FooterSection() {
   return (
-    <div className="bg-brand-bg relative w-full overflow-clip flex flex-col gap-12 px-5 py-16 dt:block dt:h-[787px] dt:w-[1440px] dt:px-0 dt:py-0">
+    <footer className="bg-brand-bg relative w-full overflow-clip flex flex-col gap-12 px-5 py-16 dt:block dt:h-[787px] dt:w-[1440px] dt:px-0 dt:py-0">
       <FooterBottomGlow />
       <MaskedN7Wordmark />
       <FooterColumns />
       <CopyrightLine />
-    </div>
+    </footer>
   );
 }

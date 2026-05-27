@@ -476,7 +476,10 @@ function CaseStudiesCarousel() {
 
 export default function CaseStudiesGridSection() {
   return (
-    <div className="bg-brand-bg relative w-full overflow-clip flex flex-col gap-10 px-5 py-16 dt:block dt:h-[872px] dt:w-[1440px] dt:px-0 dt:py-0">
+    <section
+      className="bg-brand-bg relative w-full overflow-clip flex flex-col gap-10 px-5 py-16 dt:block dt:h-[872px] dt:w-[1440px] dt:px-0 dt:py-0"
+      aria-label="Case studies"
+    >
       <p
         className="relative w-full text-center order-first dt:order-none [word-break:break-word] font-['Archivo:Regular',sans-serif] font-normal leading-[1.2] text-brand-fg text-[clamp(2rem,7vw,2.6rem)] dt:text-[53px] tracking-[-0.53px] dt:absolute dt:-translate-x-1/2 dt:left-[calc(25%+360px)] dt:top-[43.17px] dt:w-[463.264px]"
         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -484,6 +487,6 @@ export default function CaseStudiesGridSection() {
         Our Case Studies
       </p>
       <CaseStudiesCarousel />
-    </div>
+    </section>
   );
 }

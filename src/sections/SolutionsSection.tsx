@@ -297,10 +297,13 @@ function SolutionsBackgroundBlob() {
 
 export default function SolutionsSection() {
   return (
-    <div className="bg-brand-bg relative w-full overflow-clip flex flex-col gap-12 px-5 py-16 dt:block dt:h-[1177px] dt:w-[1440px] dt:px-0 dt:py-0">
+    <section
+      className="bg-brand-bg relative w-full overflow-clip flex flex-col gap-12 px-5 py-16 dt:block dt:h-[1177px] dt:w-[1440px] dt:px-0 dt:py-0"
+      aria-label="Solutions"
+    >
       <SolutionsBackgroundBlob />
       <SolutionsHeadlineAndCta />
       <SolutionsCardsGrid />
-    </div>
+    </section>
   );
 }

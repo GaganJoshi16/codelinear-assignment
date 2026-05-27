@@ -1,5 +1,6 @@
 import { useState } from "react";
 import svgPaths from "../assets/svg-paths";
+import { NavOutlineButton } from "../components/ui";
 
 function DropdownChevron() {
   return (
@@ -9,6 +10,7 @@ function DropdownChevron() {
         fill="none"
         preserveAspectRatio="none"
         viewBox="0 0 13.728 13.728"
+        aria-hidden="true"
       >
         <g clipPath="url(#nav-chevron-clip)">
           <path
@@ -31,26 +33,34 @@ function DropdownChevron() {
 
 function NavLinkWithMenu({ label }: { label: string }) {
   return (
-    <div className="content-stretch flex gap-[4px] items-center justify-center relative shrink-0">
-      <p className="[word-break:break-word] font-['Chivo_Mono_Medium:Regular',sans-serif] leading-[1.3] not-italic relative shrink-0 text-brand-fg text-[12px] uppercase whitespace-nowrap">
+    <a
+      href="#"
+      className="content-stretch flex gap-[4px] items-center justify-center relative shrink-0 no-underline"
+      onClick={(e) => e.preventDefault()}
+    >
+      <span className="[word-break:break-word] font-['Chivo_Mono_Medium:Regular',sans-serif] leading-[1.3] not-italic relative shrink-0 text-brand-fg text-[12px] uppercase whitespace-nowrap">
         {label}
-      </p>
-      <div className="flex items-center justify-center relative shrink-0 size-[13.728px]">
-        <div className="-rotate-90 flex-none">
+      </span>
+      <span className="flex items-center justify-center relative shrink-0 size-[13.728px]">
+        <span className="-rotate-90 flex-none">
           <DropdownChevron />
-        </div>
-      </div>
-    </div>
+        </span>
+      </span>
+    </a>
   );
 }
 
 function NavLink({ label }: { label: string }) {
   return (
-    <div className="content-stretch flex gap-[4px] items-center justify-center relative shrink-0">
-      <p className="[word-break:break-word] font-['Chivo_Mono_Medium:Regular',sans-serif] leading-[1.3] not-italic relative shrink-0 text-brand-fg text-[12px] uppercase whitespace-nowrap">
+    <a
+      href="#"
+      className="content-stretch flex gap-[4px] items-center justify-center relative shrink-0 no-underline"
+      onClick={(e) => e.preventDefault()}
+    >
+      <span className="[word-break:break-word] font-['Chivo_Mono_Medium:Regular',sans-serif] leading-[1.3] not-italic relative shrink-0 text-brand-fg text-[12px] uppercase whitespace-nowrap">
         {label}
-      </p>
-    </div>
+      </span>
+    </a>
   );
 }
 
@@ -64,27 +74,11 @@ function PrimaryNavLinks() {
   );
 }
 
-function RequestDemoButton() {
-  return (
-    <div className="content-stretch flex gap-[20px] items-center relative shrink-0">
-      <div className="content-stretch flex items-center justify-center px-[37px] py-[5px] relative rounded-[6px] shrink-0">
-        <div
-          aria-hidden="true"
-          className="absolute border border-brand-fg border-solid inset-0 pointer-events-none rounded-[6px]"
-        />
-        <p className="[word-break:break-word] font-['Chivo_Mono_Medium:Regular',sans-serif] leading-[1.3] not-italic relative shrink-0 text-brand-fg text-[12px] uppercase whitespace-nowrap">
-          request demo
-        </p>
-      </div>
-    </div>
-  );
-}
-
 function NavRightCluster() {
   return (
     <div className="content-stretch flex gap-[80px] items-center relative shrink-0">
       <PrimaryNavLinks />
-      <RequestDemoButton />
+      <NavOutlineButton label="request demo" />
     </div>
   );
 }
@@ -106,7 +100,7 @@ export default function HeaderNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="absolute z-50 left-4 right-4 top-4 dt:left-1/2 dt:right-auto dt:-translate-x-1/2 dt:top-[31px] backdrop-blur-[7.5px] bg-[rgba(47,47,47,0.7)] rounded-[12px] px-[16px] dt:px-[10px] py-[10px] dt:py-[9px]">
+    <header className="absolute z-50 left-4 right-4 top-4 dt:left-1/2 dt:right-auto dt:-translate-x-1/2 dt:top-[31px] backdrop-blur-[7.5px] bg-[rgba(47,47,47,0.7)] rounded-[12px] px-[16px] dt:px-[10px] py-[10px] dt:py-[9px]">
       <div className="flex items-center justify-between dt:justify-start dt:gap-[160px]">
         <p
           className="[word-break:break-word] font-['Archivo:Medium',sans-serif] font-medium leading-[1.2] relative shrink-0 text-brand-fg text-[20px] dt:text-[24px] whitespace-nowrap"
@@ -115,31 +109,31 @@ export default function HeaderNav() {
           N7
         </p>
 
-        <div className="hidden dt:block">
+        <nav className="hidden dt:block" aria-label="Primary">
           <NavRightCluster />
-        </div>
+        </nav>
 
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="dt:hidden flex items-center justify-center size-9 -mr-1 text-brand-fg"
+          className="dt:hidden flex items-center justify-center size-9 -mr-1 text-brand-fg border-0 bg-transparent cursor-pointer"
         >
           <MenuToggleIcon open={open} />
         </button>
       </div>
 
-      {open && (
-        <div className="dt:hidden flex flex-col gap-5 pt-5 pb-2">
+      {open ? (
+        <nav className="dt:hidden flex flex-col gap-5 pt-5 pb-2" aria-label="Mobile">
           <NavLinkWithMenu label="solutions" />
           <NavLinkWithMenu label="resources" />
           <NavLink label="About us" />
           <div className="pt-1">
-            <RequestDemoButton />
+            <NavOutlineButton label="request demo" />
           </div>
-        </div>
-      )}
-    </div>
+        </nav>
+      ) : null}
+    </header>
   );
 }
